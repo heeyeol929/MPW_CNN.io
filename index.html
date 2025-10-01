@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hee-Yeol's Lab Notes</title>
-  <meta name="description" content="Lab notes on static-modulated FTIR, ATR-FTIR datasets, mixed plastic waste classification, time-series forecasting, and iTransformer — concise and reproducible." />
+  <title>Hee-Yeol — Assignments</title>
+  <meta name="description" content="A simple hub for assignments and submitted files (과제 제출 페이지)." />
   <meta name="author" content="Kim Hee-Yeol" />
-  <meta property="og:title" content="Hee-Yeol's Lab Notes" />
-  <meta property="og:description" content="Static-modulated FTIR, ATR-FTIR datasets, mixed plastic waste classification, time-series forecasting, iTransformer — concise and reproducible." />
+  <meta property="og:title" content="Hee-Yeol — Assignments" />
+  <meta property="og:description" content="A simple hub for assignments and submitted files (과제 제출 페이지)." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/assets/og-image.png" />
   <meta name="theme-color" content="#0ea5e9" />
@@ -47,17 +47,10 @@
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
   </style>
   <script>
-    const setTheme = (t)=>{ document.documentElement.classList.toggle('dark', t==='dark'); localStorage.setItem('theme', t); }
-    const current = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    setTheme(current);
-    function toggleTheme(){ setTheme(document.documentElement.classList.contains('dark') ? 'light' : 'dark'); }
-    function filterPosts(e){
-      const q = e.value.toLowerCase();
-      for(const card of document.querySelectorAll('[data-post]')){
-        const text = card.innerText.toLowerCase();
-        card.style.display = text.includes(q)?'':'none';
-      }
-    }
+    const setTheme=(t)=>{document.documentElement.classList.toggle('dark',t==='dark');localStorage.setItem('theme',t);}
+    const current=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'); setTheme(current);
+    function toggleTheme(){setTheme(document.documentElement.classList.contains('dark')?'light':'dark');}
+    function filterCards(el){const q=el.value.toLowerCase();for(const c of document.querySelectorAll('[data-card]')){c.style.display=c.innerText.toLowerCase().includes(q)?'':'none';}}
   </script>
 </head>
 <body>
@@ -65,96 +58,64 @@
     <nav class="nav" aria-label="Primary">
       <div class="brand">
         <div class="logo" aria-hidden="true"></div>
-        <h1>Hee-Yeol's Lab Notes</h1>
+        <h1>Hee-Yeol — Assignments</h1>
       </div>
       <div style="display:flex; gap:8px; align-items:center">
-        <a href="/about.html" class="btn" aria-current="page">About</a>
+        <a href="#assignments" class="btn">Assignments</a>
+        <a href="#about" class="btn">About</a>
         <button class="btn" onclick="toggleTheme()" aria-label="Toggle dark mode">🌓 Theme</button>
-        <!-- Update to your repo if needed -->
         <a class="btn" href="https://github.com/heeyeol929/MPW_CNN.io" target="_blank" rel="noreferrer">GitHub</a>
       </div>
     </nav>
 
     <section class="hero">
       <div class="list" style="margin-bottom:10px">
-        <span class="chip">🔭 Static-Modulated FTIR</span>
-        <span class="chip">🧪 ATR-FTIR Dataset</span>
-        <span class="chip">♻️ Mixed Plastic Classification</span>
-        <span class="chip">📈 Time-series Forecasting</span>
-        <span class="chip">🧠 iTransformer</span>
+        <span class="chip">📚 과제 제출 페이지</span>
+        <span class="chip">✅ Downloadable Files</span>
+        <span class="chip">🔗 Permanent Links</span>
       </div>
-      <h2>A blog for experiments and insights</h2>
-      <p>Static-Modulated FTIR Spectrometer, ATR-FTIR datasets, mixed plastic waste classification, time-series forecasting, and iTransformer — captured concisely in a reproducible, code-first format.</p>
+      <h2>Assignments hub (과제 모음)</h2>
+      <p>Professor can review the submitted files below. Each card includes a brief description and a direct download link.</p>
     </section>
 
-    <label class="sr-only" for="search">Search posts</label>
-    <input id="search" class="search" type="search" placeholder="Search: e.g., GAF, FTIR, PM2.5… (Press / to focus)" oninput="filterPosts(this)" onfocus="this.select()" />
+    <label class="sr-only" for="search">Filter assignments</label>
+    <input id="search" class="search" type="search" placeholder="Filter assignments (e.g., GitHub, FastAPI) — Press /" oninput="filterCards(this)" onfocus="this.select()" />
 
-    <section class="section" aria-labelledby="recent-posts">
-      <h2 id="recent-posts">Recent Posts</h2>
+    <!-- ASSIGNMENTS -->
+    <section class="section" id="assignments" aria-labelledby="assignments-title">
+      <h2 id="assignments-title">Assignments</h2>
       <div class="grid">
-        <article class="card" data-post>
-          <div class="meta"><span>📅 2025-09-25</span><span>•</span><span>GAF-CNN</span></div>
-          <h3><a href="/posts/gaf-pm25-baseline.html">PM2.5 Forecasting with GAF-CNN</a></h3>
-          <p>GASF/GADF with meta-feature fusion improves 30-day forecasts. Includes data pipeline and code snippets.</p>
-        </article>
 
-        <article class="card" data-post>
-          <div class="meta"><span>📅 2025-09-12</span><span>•</span><span>FTIR</span></div>
-          <h3><a href="/posts/ftir-interferogram-augmentation.html">Interferogram Augmentation for Mixed Plastics</a></h3>
-          <p>Phase shift, baseline drift, and noise injection to reach ~97% accuracy with limited samples.</p>
-        </article>
-        <!-- Removed SoC/Verilog card as requested -->
-      </div>
-    </section>
-
-    <!-- Downloads section wired to your new folder -->
-    <section class="section" aria-labelledby="downloads">
-      <h2 id="downloads">Downloads</h2>
-      <div class="grid">
-        <article class="card">
-          <div class="meta"><span>📄 Resource</span><span>•</span><span>Guide</span></div>
-          <h3>GitHub Desktop Guide (PDF)</h3>
-          <p>How to manage repositories with GitHub Desktop and publish documents to GitHub Pages.</p>
+        <!-- Assignment #1 -->
+        <article class="card" data-card>
+          <div class="meta">
+            <span>📅 Submitted: 2025-10-01</span><span>•</span><span>Status: Submitted</span>
+          </div>
+          <h3>GitHub Desktop Research & Blog Upload Guide</h3>
+          <p>Overview of managing repositories with GitHub Desktop and steps to publish Word/PDF files on GitHub Pages (Korean document).</p>
           <p style="margin-top:8px">
-            <a href="/software_project_hanseo/github_리서치_김희열.pdf">Download PDF</a>
+            <a href="/software_project_hanseo/github_리서치_김희열.pdf" target="_blank" rel="noreferrer">View / Download PDF</a>
           </p>
         </article>
-      </div>
-    </section>
 
-    <section class="section" aria-labelledby="tags">
-      <h2 id="tags">Tags</h2>
-      <div class="list">
-        <a class="chip" href="/tags/ftir.html">#FTIR</a>
-        <a class="chip" href="/tags/atr-ftir.html">#ATR-FTIR</a>
-        <a class="chip" href="/tags/gaf.html">#GAF</a>
-        <a class="chip" href="/tags/pm25.html">#PM2.5</a>
-        <a class="chip" href="/tags/mixed-plastics.html">#Mixed-Plastics</a>
-        <a class="chip" href="/tags/itransformer.html">#iTransformer</a>
-        <!-- Removed #SoC and #Verilog as requested -->
+        <!-- Add more assignments by duplicating this card and changing the link/title/date. -->
       </div>
     </section>
 
     <section class="section" id="about" aria-labelledby="about-title">
       <h2 id="about-title">About</h2>
-      <p>Senior undergraduate in Electrical & Electronics Engineering at Hanseo University. Member of the Applied Optics Lab, working on FTIR-based sensing, machine learning for spectroscopy, and time-series forecasting.</p>
-      <p>Contact: <a href="mailto:0929khy@gmail.com">0929khy@gmail.com</a> · Instagram: <a href="https://instagram.com/hy3ol" target="_blank" rel="noreferrer">@hy3ol</a></p>
+      <p>Senior undergraduate in Electrical & Electronics Engineering at Hanseo University; member of the Applied Optics Lab. This page aggregates course assignments and submitted materials.</p>
+      <p>Contact: <a href="mailto:0929khy@gmail.com">0929khy@gmail.com</a></p>
     </section>
 
     <footer class="footer">
-      <div class="meta">© <span id="year"></span> Hee-Yeol Kim • press <span class="kbd">/</span> to search</div>
+      <div class="meta">© <span id="year"></span> Hee-Yeol Kim • press <span class="kbd">/</span> to filter</div>
     </footer>
   </div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    window.addEventListener('keydown', (e)=>{
-      if(e.key==='/' && document.activeElement.tagName!=='INPUT' && document.activeElement.tagName!=='TEXTAREA'){
-        e.preventDefault();
-        document.querySelector('.search').focus();
-      }
-    });
+    window.addEventListener('keydown',(e)=>{ if(e.key==='/'&& !/INPUT|TEXTAREA/.test(document.activeElement.tagName)){ e.preventDefault(); document.querySelector('.search').focus(); }});
   </script>
 </body>
 </html>
