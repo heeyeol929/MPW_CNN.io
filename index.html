@@ -13,12 +13,8 @@
   <meta name="theme-color" content="#0ea5e9" />
   <link rel="icon" href="/assets/favicon.png" />
   <style>
-    :root{
-      --bg:#ffffff; --fg:#0f172a; --muted:#64748b; --card:#f8fafc; --acc:#0ea5e9; --border:#e2e8f0;
-    }
-    :root.dark{
-      --bg:#0b1020; --fg:#e5e7eb; --muted:#94a3b8; --card:#0f172a; --acc:#38bdf8; --border:#1f2937;
-    }
+    :root{ --bg:#ffffff; --fg:#0f172a; --muted:#64748b; --card:#f8fafc; --acc:#0ea5e9; --border:#e2e8f0; }
+    :root.dark{ --bg:#0b1020; --fg:#e5e7eb; --muted:#94a3b8; --card:#0f172a; --acc:#38bdf8; --border:#1f2937; }
     *{box-sizing:border-box}
     body{margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--fg); line-height:1.65}
     a{color:var(--acc); text-decoration:none}
@@ -51,16 +47,10 @@
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
   </style>
   <script>
-    // Theme
-    const setTheme = (t)=>{
-      document.documentElement.classList.toggle('dark', t==='dark');
-      localStorage.setItem('theme', t);
-    }
+    const setTheme = (t)=>{ document.documentElement.classList.toggle('dark', t==='dark'); localStorage.setItem('theme', t); }
     const current = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     setTheme(current);
     function toggleTheme(){ setTheme(document.documentElement.classList.contains('dark') ? 'light' : 'dark'); }
-
-    // Search filter
     function filterPosts(e){
       const q = e.value.toLowerCase();
       for(const card of document.querySelectorAll('[data-post]')){
@@ -80,8 +70,8 @@
       <div style="display:flex; gap:8px; align-items:center">
         <a href="/about.html" class="btn" aria-current="page">About</a>
         <button class="btn" onclick="toggleTheme()" aria-label="Toggle dark mode">🌓 Theme</button>
-        <!-- Replace USERNAME with your GitHub username -->
-        <a class="btn" href="https://github.com/USERNAME/USERNAME.github.io" target="_blank" rel="noreferrer">GitHub</a>
+        <!-- Update to your repo if needed -->
+        <a class="btn" href="https://github.com/heeyeol929/MPW_CNN.io" target="_blank" rel="noreferrer">GitHub</a>
       </div>
     </nav>
 
@@ -103,7 +93,6 @@
     <section class="section" aria-labelledby="recent-posts">
       <h2 id="recent-posts">Recent Posts</h2>
       <div class="grid">
-        <!-- Duplicate this card to add posts; link to /posts/*.html or Markdown rendered pages -->
         <article class="card" data-post>
           <div class="meta"><span>📅 2025-09-25</span><span>•</span><span>GAF-CNN</span></div>
           <h3><a href="/posts/gaf-pm25-baseline.html">PM2.5 Forecasting with GAF-CNN</a></h3>
@@ -115,11 +104,21 @@
           <h3><a href="/posts/ftir-interferogram-augmentation.html">Interferogram Augmentation for Mixed Plastics</a></h3>
           <p>Phase shift, baseline drift, and noise injection to reach ~97% accuracy with limited samples.</p>
         </article>
+        <!-- Removed SoC/Verilog card as requested -->
+      </div>
+    </section>
 
-        <article class="card" data-post>
-          <div class="meta"><span>📅 2025-08-30</span><span>•</span><span>SoC</span></div>
-          <h3><a href="/posts/verilog-fast-start.html">Verilog Fast Start: A Practical Template</a></h3>
-          <p>Vivado/ModelSim setup, testbench patterns, and a quick pipelining checklist.</p>
+    <!-- Downloads section wired to your new folder -->
+    <section class="section" aria-labelledby="downloads">
+      <h2 id="downloads">Downloads</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="meta"><span>📄 Resource</span><span>•</span><span>Guide</span></div>
+          <h3>GitHub Desktop Guide (PDF)</h3>
+          <p>How to manage repositories with GitHub Desktop and publish documents to GitHub Pages.</p>
+          <p style="margin-top:8px">
+            <a href="/software_project_hanseo/github_리서치_김희열.pdf">Download PDF</a>
+          </p>
         </article>
       </div>
     </section>
@@ -133,8 +132,7 @@
         <a class="chip" href="/tags/pm25.html">#PM2.5</a>
         <a class="chip" href="/tags/mixed-plastics.html">#Mixed-Plastics</a>
         <a class="chip" href="/tags/itransformer.html">#iTransformer</a>
-        <a class="chip" href="/tags/soc.html">#SoC</a>
-        <a class="chip" href="/tags/verilog.html">#Verilog</a>
+        <!-- Removed #SoC and #Verilog as requested -->
       </div>
     </section>
 
@@ -150,9 +148,7 @@
   </div>
 
   <script>
-    // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
-    // Focus search on '/'
     window.addEventListener('keydown', (e)=>{
       if(e.key==='/' && document.activeElement.tagName!=='INPUT' && document.activeElement.tagName!=='TEXTAREA'){
         e.preventDefault();
@@ -160,7 +156,5 @@
       }
     });
   </script>
-  <!-- (Optional) Analytics -->
-  <!-- <script>/* your analytics */</script> -->
 </body>
 </html>
